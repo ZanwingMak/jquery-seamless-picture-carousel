@@ -129,13 +129,14 @@
 
             var num = 0;
             //获取窗口宽度
-            var window_width = $(window).width();
+            var window_width = $(window).width();            
+			//当窗口尺寸改变时
             $(window).resize(function(){
                 window_width = $(window).width();
                 $('.banner ul li').css({width:window_width});
                 clearInterval(timer);
                 nextPlay();
-                timer = setInterval(nextPlay,2000);
+                //timer = setInterval(nextPlay,2000);
             });
             //console.log(window_width);
             $('.banner ul li').width(window_width);
