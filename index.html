@@ -128,14 +128,19 @@
             //=========================
 
             var num = 0;
+            var timer = null;
             //获取窗口宽度
-            var window_width = $(window).width();            
+            var window_width = $(window).width();
 			//当窗口尺寸改变时
             $(window).resize(function(){
                 window_width = $(window).width();
-                $('.banner ul li').css({width:window_width});
-                clearInterval(timer);
-                nextPlay();
+				var current_index = $('.banner ol .current').index();
+				//console.log($('.banner ul').css('left'));
+                $('.banner ul').stop().animate({left:-(window_width*current_index)},300);	
+				console.log($('.banner ul').css('left'));	
+                $('.banner ul li').css({width:window_width});		
+                //clearInterval(timer);
+                //nextPlay();
                 //timer = setInterval(nextPlay,2000);
             });
             //console.log(window_width);
@@ -153,7 +158,6 @@
                 num = i;
             });
             //自动播放
-            var timer = null;
             function prevPlay(){
                 num--;
                 if(num<0){
@@ -180,7 +184,7 @@
                     //随后要把指针指向第二张图片,表示已经播放至第二张了。
                     num=1;
                 }else{
-                    //在最后面加入一张和第一张相同的图片，如果播放到最后一张，继续往下播，悄悄回到第一张(肉眼看不见)，从第一张播放到第二张
+                    //在最后面加入一张和第一张相同的图，片如果播放到最后一张，继续往下播，悄悄回到第一张(肉眼看不见)，从第一张播放到第二张
                     //console.log(num);
                     $('.banner ul').stop().animate({left:-num*window_width},500);
                 }
@@ -221,5 +225,7 @@
         </ol>
         <i class="left"></i><i class="right"></i>
     </div>
+	当鼠标在图片上会暂停轮播
+	当窗口大小改变时，图片尺寸自动适应并移到正确的位置
 </body>
 </html>
