@@ -137,11 +137,8 @@
 				var current_index = $('.banner ol .current').index();
 				//console.log($('.banner ul').css('left'));
                 $('.banner ul').stop().animate({left:-(window_width*current_index)},300);	
-				console.log($('.banner ul').css('left'));	
-                $('.banner ul li').css({width:window_width});		
-                //clearInterval(timer);
-                //nextPlay();
-                //timer = setInterval(nextPlay,2000);
+				//console.log($('.banner ul').css('left'));	
+                $('.banner ul li').css({width:window_width});
             });
             //console.log(window_width);
             $('.banner ul li').width(window_width);
